@@ -1,0 +1,26 @@
+<mat-card class="my-card">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <form [formGroup]="alticciForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>calculate alticci</mat-label>
+        <input matInput placeholder="" value="" formControlName="alticciInput" />
+      </mat-form-field>
+
+      <button mat-button color="primary" type="submit" [disabled]="!alticciForm.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <ng-container>
+    <mat-label>Result:</mat-label>
+    <textarea
+      #resultDiv
+      matInput
+      (valueChange)="getNewHeight()"
+      [value]="alticciResult?.calculatedValue"
+      readonly
+    >
+    </textarea>
+  </ng-container>
+</mat-card>
