@@ -19,7 +19,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -29,10 +28,8 @@ dependencies {
 	implementation 'com.github.ben-manes.caffeine:caffeine:3.1.1'
 	implementation 'com.github.ben-manes.caffeine:jcache:3.1.1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'com.zaxxer:HikariCP:5.0.1'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
 	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.9'
-	implementation 'com.zaxxer:HikariCP:5.0.1'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.2'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
