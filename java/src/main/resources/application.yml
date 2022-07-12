@@ -1,26 +1,20 @@
 spring:
   application:
-    name: comrades
-  liquibase:
-    changeLog: "classpath:db/migration/change-log.json"
-  flyway:
-    baseline-on-migrate: true
+    name: alticci
 
+  h2:
+    console:
+      enabled: true
+      path: /h2
   datasource:
-    driver-class-name: org.postgresql.Driver
-    jdbcUrl: jdbc:postgresql://localhost:5432/comrades?schema=public
-    username: postgres
-    password: qwe123
+    url: jdbc:h2:file:~/test
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
 
 server:
   port: 8090
 
-#management:
-#  endpoints:
-#    web:
-#      base-path: /rest/actuator
-#      exposure:
-#        include: '*'
 
 
 springdoc:
