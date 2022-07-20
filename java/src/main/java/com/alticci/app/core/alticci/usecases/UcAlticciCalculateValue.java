@@ -15,39 +15,39 @@ import java.math.BigInteger;
 
 @Getter
 @Setter
-public class UcAlticciCalculateValue extends UseCase<BigInteger> {
+public class UcAlticciCalculateValue extends UseCase<Integer> {
 
     private Long initialValue;
-    private BigInteger calculatedValue;
+    private Integer calculatedValue;
     private final CacheManager _cacheManager;
 
     public UcAlticciCalculateValue(Long value, CacheManager cacheManager) {
         super();
         initialValue = value;
-        calculatedValue = new BigInteger("0");
+        calculatedValue = 0;
         _cacheManager = cacheManager;
     }
 
     @Override
-    protected BigInteger execute() {
+    protected Integer execute() {
         return alticciCalculator(initialValue);
     }
 
-    public BigInteger alticciCalculator(Long actualValue) {
+    public Integer alticciCalculator(Long actualValue) {
         if (actualValue == 0) {
-            return new BigInteger("0");
+            return 0;
         } else if (actualValue == 1) {
-            return new BigInteger("1");
+            return 1;
         } else if (actualValue == 2) {
-            return new BigInteger("1");
+            return 1;
         } else {
             CaffeineCache caffeineCache = (CaffeineCache) _cacheManager.getCache("alticci");
             Cache<Object, Object> nativeCache = caffeineCache.getNativeCache();
             var oto = (SingleResultDto<AlticciDto>) nativeCache.asMap().get(actualValue);
             if (oto != null) {
-                return new BigInteger(oto.getData().getCalculatedValue());
+                return Integer.parseInt(oto.getData().getCalculatedValue());
             } else {
-                calculatedValue = calculatedValue.add(alticciCalculator(actualValue - 3)).add(alticciCalculator(actualValue - 2));
+                calculatedValue = alticciCalculator(actualValue - 3) + alticciCalculator(actualValue - 2);
                 return calculatedValue;
             }
         }
